@@ -1,0 +1,12 @@
+.background { 
+    background-image: url("../images/ghost.jpg");
+    height: 100vh;
+    width: 100%;
+    background-position-x: left;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.player {
+    
+}
