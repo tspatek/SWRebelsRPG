@@ -31,10 +31,27 @@ $(document).ready(function() {
                 attackPower: 0,
                 counterAttackPower: 0
             }
-        }
+        },
+        setup: function() {
+            //if 
+            if ($(".character-home").
+        },
+        start: function() {
+            //player clicks on character
+            //character moves to Player section (middle-left)
+            //3 enemies move to Enemies section (bottom-centered)
+
+            //player clicks on enemy
+            //enemy moves to Defender section (middle-right)
+            //
+        },
+        attack: function() {
+            //triggered by attack button press
+        },
     };
 
-    $(".player").on("click", function() {
+    game.setup();
+    $(".character").on("click", function() {
         
     });
 });
