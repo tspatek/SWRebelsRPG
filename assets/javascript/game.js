@@ -1,12 +1,16 @@
 
 var game = {
     player: {
+        id: "",
         name: "",
+        img: "",
         health: 0,
         attack: 0,
     },
     defender: {
+        id: "",
         name: "",
+        img: "",
         health: 0,
         counterAttack: 0
     },
@@ -57,44 +61,52 @@ var game = {
             </div>`
         );
     },
-    // pickPlayer: function (event) {
-    //     event.stopImmediatePropagation();
-    //     var idValue = $(event.target).attr('id');
-    //     var cssId = "#" + idValue;
-    //     console.log(cssId);
-    //     console.log(idValue);
+    pickPlayer: function (event) {
+        var idValue = $(this).attr("id");
+        var cssId = "#" + idValue;
 
-    //     game.character.forEach(function (obj) {
-    //         if (obj.name === idValue) {
-    //             game.player.name = obj.name;
-    //             game.player.healthPoints = obj.healthPoints;
-    //             game.player.attackPower = obj.attackPower;
-    //         }
-    //     });
+        game.character.forEach(function (obj) {
+            if (obj.id === idValue) {
+                game.player.id = obj.id;
+                game.player.name = obj.name;
+                game.player.img = obj.img;
+                game.player.health = obj.health;
+                game.player.attack = obj.attack;
+            }
+        });
 
-    //     //character with selected id is moved
-    //     //to Player area
-    //     $(cssId).detach().appendTo("#player");
-    //     $(cssId).css("background-color", "#be5457");
-    //     $(cssId).css("color", "#fefcf9");
+        $(cssId).detach();
 
-        //Append <h2>PLAYER</h2> to id="kanan-home"
+        //character with selected id is moved
+        //to Player area
+        game.displayChar(
+            "#player", 
+            game.player.id,
+            game.player.name,
+            game.player.img,
+            game.player.health
+        );
 
-        //Change id avail players class attr to 
-        //align-items-start
+        $(cssId).css("background-color", "#be5457");
+        $(cssId).css("color", "#fefcf9");
 
-        //charaters without selected id are moved
-        //to Enemies area 
+        // Append <h2>PLAYER</h2> to id="kanan-home"
 
-        //Append <h2>AVAILABLE ENEMIES</h2> to
-        //id avial-enemies 
+        // Change id avail players class attr to 
+        // align-items-start
 
-        //Append <h2>DEFENDER</h2> to id="thrawn-home"
+        // charaters without selected id are moved
+        // to Enemies area 
 
-        //find character object with selected 
-        //id and assign to player 
+        // Append <h2>AVAILABLE ENEMIES</h2> to
+        // id avial-enemies 
 
-    // },
+        // Append <h2>DEFENDER</h2> to id="thrawn-home"
+
+        // find character object with selected 
+        // id and assign to player 
+
+    }
     // attack: function () {
     //     //triggered by attack button press
     // },
@@ -133,28 +145,7 @@ $(document).ready(function () {
         game.character[3].health
     );
 
-    $(".character").on("click", function(){
-        // var idValue = $(event.target);
-        // console.log(idValue); 
-            // .attr('id');
-        // var cssId = "#" + idValue;
-        // console.log(cssId);
-        // console.log(idValue);
-
-        // game.character.forEach(function (obj) {
-        //     if (obj.name === idValue) {
-        //         game.player.name = obj.name;
-        //         game.player.healthPoints = obj.healthPoints;
-        //         game.player.attackPower = obj.attackPower;
-        //     }
-        // });
-
-        // //character with selected id is moved
-        // //to Player area
-        // $(cssId).detach().appendTo("#player");
-        // $(cssId).css("background-color", "#be5457");
-        // $(cssId).css("color", "#fefcf9");
-    });
+    $(".character").on("click", game.pickPlayer);
 
     $("#attack").on("click", function () {
 
