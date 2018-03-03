@@ -1,5 +1,4 @@
 body {
-    color: #202126;
     font-weight: bold;
     margin: 0px; 
     padding: 0px;
@@ -26,6 +25,7 @@ h2 {
 
 .character {
     background-color: #fefcf9;
+    color: #202126;
     height: 175;
     width: 175;
 }
