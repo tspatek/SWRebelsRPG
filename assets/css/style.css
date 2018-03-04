@@ -26,6 +26,21 @@ h2 {
 .character {
     background-color: #fefcf9;
     color: #202126;
-    height: 175;
-    width: 175;
+    max-width: 225px;
+}
+
+#kanan {
+
+}
+
+#ahsoka {
+
+}
+
+#inquisitor {
+
+}
+
+#thrawn {
+
 }
