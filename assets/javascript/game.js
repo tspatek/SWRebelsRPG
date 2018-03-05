@@ -6,11 +6,17 @@ $(document).ready(function () {
 
     var game = {
         player: {
+            id: " ",
+            name: " ",
+            img: " ",
             health: 0,
             baseAttack: 0,
             attack: 0,
         },
         defender: {
+            id: " ",
+            name: " ",
+            img: " ",
             health: 0,
             counterAttack: 0,
         },
@@ -85,6 +91,9 @@ $(document).ready(function () {
 
                 if (obj.id === idValue) {
                     obj.isPLayer = true;
+                    game.player.id = obj.id;
+                    game.player.name = obj.name;
+                    game.player.img = obj.img;
                     game.player.health = obj.health;
                     game.player.baseAttack = obj.baseAttack;
                     game.player.attack = obj.attack;
@@ -98,6 +107,10 @@ $(document).ready(function () {
                     );
                 } else {
                     obj.isEnemy = true;
+
+                    $(jqId).css("background-color", "#be5457");
+                    $(jqId).css("color", "#fefcf9");
+
                     game.displayChar(
                         "#avail-enemies",
                         obj.id,
@@ -105,9 +118,6 @@ $(document).ready(function () {
                         obj.img,
                         obj.health
                     );
-
-                    $(jqId).css("background-color", "#be5457");
-                    $(jqId).css("color", "#fefcf9");
                 }
             });
 
@@ -135,6 +145,12 @@ $(document).ready(function () {
             game.character.forEach(function (obj) {
                 if (obj.id === idValue && obj.isEnemy) {
                     obj.isDefender = true;
+                    game.defender.id = obj.id;
+                    game.defender.name = obj.name;
+                    game.defender.img = obj.name;
+                    game.defender.health = obj.health;
+                    game.defender.counterAttack = obj.counterAttack;
+
                     game.displayChar(
                         "#defender",
                         obj.id,
@@ -142,8 +158,7 @@ $(document).ready(function () {
                         obj.img,
                         obj.health
                     );
-                    game.defender.health = obj.health;
-                    game.defender.counterAttack = obj.counterAttack;
+                    
                 }
             });
         },
@@ -174,6 +189,24 @@ $(document).ready(function () {
                 }
 
             });
+            
+            $("#player").empty();
+            $("#defender").empty();
+
+            game.displayChar(
+                "#player",
+                game.player.id,
+                game.player.name,
+                game.player.img,
+                game.player.health
+            );
+            game.displayChar(
+                "#defender",
+                game.defender.id,
+                game.defender.name,
+                game.defender.img,
+                game.defender.health
+            );
         }
     };
 
@@ -190,11 +223,9 @@ $(document).ready(function () {
 
     $(".container").on("click", ".character", game.pickChar);
 
-    $("attack-button").on("click", function () {
+    $("button").on("click", "#attack-button", game.attack);
 
-    });
-
-    $("button").on("click", "#restart-button" function () {
+    $("button").on("click", "#restart-button", function () {
 
     });
 });
