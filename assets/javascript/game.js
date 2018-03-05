@@ -105,12 +105,11 @@ $(document).ready(function () {
                         obj.img,
                         obj.health
                     );
+                    $("#player").prepend(
+                        "<h2>PLAYER</h2>"
+                    );
                 } else {
                     obj.isEnemy = true;
-
-                    $(jqId).css("background-color", "#be5457");
-                    $(jqId).css("color", "#fefcf9");
-
                     game.displayChar(
                         "#avail-enemies",
                         obj.id,
@@ -122,14 +121,6 @@ $(document).ready(function () {
             });
 
             $("#avail-players").empty();
-
-            // Append <h2>PLAYER</h2> to id="kanan-home"
-
-            // Append <h2>AVAILABLE ENEMIES</h2> to
-            // id avial-enemies 
-
-            // Append <h2>DEFENDER</h2> to id="thrawn-home"
-
         },
         pickDefender: function (event) {
             idValue = $(event.currentTarget).attr("id").trim();
@@ -151,6 +142,9 @@ $(document).ready(function () {
                         obj.name,
                         obj.img,
                         obj.health
+                    );
+                    $("#defender").prepend(
+                        "<h2>DEFENDER</h2>"
                     );
 
                 }
@@ -187,12 +181,19 @@ $(document).ready(function () {
                 game.player.img,
                 game.player.health
             );
+            $("#player").prepend(
+                "<h2>PLAYER</h2>"
+            );
+
             game.displayChar(
                 "#defender",
                 game.defender.id,
                 game.defender.name,
                 game.defender.img,
                 game.defender.health
+            );
+            $("#defender").prepend(
+                "<h2>DEFENDER</h2>"
             );
 
             if (game.player.health > 0 && game.defender.health > 0) {
@@ -231,7 +232,7 @@ $(document).ready(function () {
             } else {
                 $("#defender").empty();
                 $("#button-home").empty();
-                
+
                 $("#button-home").append(
                     `<button id="restart-button" 
                              type="button" 
