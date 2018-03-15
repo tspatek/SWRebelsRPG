@@ -149,6 +149,8 @@ $(document).ready(function () {
 
                 }
             });
+
+            $('#attack-button').removeAttr('disabled');
         },
         pickChar: function (event) {
             game.character.forEach(function (obj) {
