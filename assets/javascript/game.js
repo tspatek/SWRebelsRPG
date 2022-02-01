@@ -150,7 +150,7 @@ $(document).ready(function () {
                 }
             });
 
-            $('#attack-button').removeAttr('disabled');
+            $("#attack-button").removeAttr("disabled");
         },
         pickChar: function (event) {
             game.character.forEach(function (obj) {
@@ -162,6 +162,7 @@ $(document).ready(function () {
                 game.pickPlayer(event);
             } else {
                 game.pickDefender(event);
+                $("#avail-enemies").children().attr("disabled", "disabled");
             }
         },
         attack: function (event) {
@@ -231,6 +232,7 @@ $(document).ready(function () {
                         You won! <br>Pick another opponent.
                     </h3>`
                 );
+                $("#avail-enemies").children().removeAttr("disabled");
             } else {
                 $("#defender").empty();
                 $("#button-home").empty();
